@@ -1,6 +1,7 @@
 var mysql = require("mysql");
 var Table = require('cli-table3');
 var inquirer = require("inquirer");
+var colors = require('colors');
 
 var connection = mysql.createConnection({
     host: "localhost",
@@ -35,7 +36,7 @@ function printTables(rows) {
     });
     console.log("Welcome here are the items availabe \n----------------------------------------")
     console.log(table.toString());
-}
+};
 
 function start() {
     connection.query("SELECT * FROM products", function (err, res) {
@@ -45,10 +46,10 @@ function start() {
 
 
     });
-}
+};
 function buy() {
     connection.query("SELECT * FROM products", function (err, results) {
-        if (err) console.log("-3", err);
+        if (err) console.log(err);
 
         inquirer.prompt([
             {
@@ -65,7 +66,7 @@ function buy() {
                         return true;
                     }
                     else {
-                        console.log("\n*Please input a valid item_id*");
+                        console.log("\n*Please input a valid item_id*".red);
                         return false;
                     }
                 },
@@ -78,7 +79,7 @@ function buy() {
                     if (isNaN(value) === false && value > 0) {
                         return true;
                     }
-                    console.log("\n*Please input a number bigger than 1*")
+                    console.log("\n*Please input a number bigger than 1*".red)
                     return false;
                 }
             }
@@ -113,7 +114,8 @@ function buy() {
                 );
             }
             else {
-                console.log("Insufficient Stock Quantity!!!")
+                console.log("Insufficient Stock Quantity!!!".red)
+                whatNow();
             }
         });
     });
@@ -134,10 +136,10 @@ function whatNow() {
             case "buy more!":
                 start();
                 break;
-        }
+        };
 
     });
-}
+};
 
 
 
