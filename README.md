@@ -1,6 +1,8 @@
 # Bamazon
 Node app simulates a storefront in a CLI app. With a customer view and a manager view
 
+#### [View Demo](https://onedrive.live.com/?authkey=%21AGeH8lwW4HFjpz0&id=84549E1CCC8AE651%2162099&cid=84549E1CCC8AE651)
+
 ## Customer View 
 You can run this view with node calling the file bamazonCustomer. 
 
